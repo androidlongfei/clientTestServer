@@ -9,6 +9,7 @@ import downloadRouter from './router/download.js'
 import pagingRouter from './router/paging.js'
 import userRouter from './router/user.js'
 import authRouter from './router/auth.js'
+import familyArchives from './router/familyArchives.js'
 import _ from 'lodash'
 
 const app = express()
@@ -67,6 +68,7 @@ testRouter(app)
 pagingRouter(app)
 userRouter(app)
 authRouter(app)
+familyArchives(app)
 
 
 app.listen(config.port);
