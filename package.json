@@ -4,12 +4,15 @@
   "description": "html5 uploader and iframe uploader.",
   "dependencies": {
     "async": "^2.4.1",
+    "blueimp-md5": "^2.10.0",
     "body-parser": "^1.17.2",
     "cors": "^2.8.3",
     "express": "^4.15.3",
     "formidable": "^1.1.1",
+    "jshashes": "^1.0.7",
     "lodash": "^4.17.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

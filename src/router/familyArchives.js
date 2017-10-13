@@ -1,18 +1,18 @@
 module.exports = function(app) {
-    app.post('/familyArchives', function(req, res) {
+    app.post('/family/addFamily', function(req, res) {
         console.log('post familyArchives body data', req.body);
         res.json({
             'status': 'success'
         });
     });
 
-    app.get('/familyArchives/baseInfo', function(req, res) {
+    app.get('/family', function(req, res) {
         console.log('get familyArchives body data', req.query)
         var familyArchives = {
             street: '南海家园六里',
             committee: '南海家园居委会',
             recordType: 'recordType_02',
-            pests: 'pests_02,pests_03,pests_04'
+            bugType: '1,3,4' // 害虫情况
         }
         res.json(familyArchives)
     });
