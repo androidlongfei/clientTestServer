@@ -12,6 +12,32 @@ import authRouter from './router/auth.js'
 import imRouter from './router/im.js'
 import familyArchives from './router/familyArchives.js'
 import _ from 'lodash'
+import moment from 'moment'
+import md5 from 'blueimp-md5'
+import doSocket from './socket/webSocket.js'
+import WebSocket from 'ws'
+
+/**
+ * WebSocket
+ * @type {WebSocket}
+ */
+const wss = new WebSocket.Server({
+  port: 3001
+});
+
+wss.on('connection', (ws) => {
+  console.log('连接成功', moment())
+  ws.socketId = md5(moment())
+  ws.on('message', (data) => {
+    console.log(`接收数据socketId:${ws.socketId}:`, data)
+  })
+
+  ws.on('close', (code) => {
+    console.log(`关闭连接socketId:${ws.socketId}:`, code)
+  })
+})
+
+doSocket(wss)
 
 const app = express()
 
