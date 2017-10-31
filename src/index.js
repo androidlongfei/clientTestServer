@@ -35,6 +35,21 @@ wss.on('connection', (ws) => {
   ws.on('close', (code) => {
     console.log(`关闭连接socketId:${ws.socketId}:`, code)
   })
+
+  setInterval(function() {
+    var data = {
+      type: 'warning',
+      content: {
+        title: '预警',
+        content: '血压过高',
+        timeStamp: moment().format('YYYY-MM-DD hh:mm:ss')
+      },
+      unread: 1
+    }
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(data))
+    }
+  }, 2000)
 })
 
 doSocket(wss)

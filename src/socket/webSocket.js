@@ -31,9 +31,7 @@ module.exports = function(wss) {
 
   wss.getAllWsId = (curWs) => {
     let allWsIds = []
-    if (wss.getAllWs(curWs).length > 0) {
-
-    }
+    if (wss.getAllWs(curWs).length > 0) {}
     return allWsIds
   }
 }
