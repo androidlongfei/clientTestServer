@@ -38,18 +38,21 @@ wss.on('connection', (ws) => {
 
   setInterval(function() {
     var data = {
-      type: 'warning',
-      content: {
-        title: '预警',
-        content: '血压过高',
-        timeStamp: moment().format('YYYY-MM-DD hh:mm:ss')
+      mtype: 1,
+      mid: md5(moment()),
+      timeStamp: moment(),
+      data: {
+        seqNo: '2017111315052500016'
       },
-      unread: 1
+      mtitle: '预警消息',
+      unread: 1,
+      mcontent: '',
+      mtname: '预警'
     }
     if (ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(data))
     }
-  }, 2000)
+  }, 1 * 60 * 1000)
 })
 
 doSocket(wss)
@@ -72,10 +75,10 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 // 跨域
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 
 // middle
-// app.use(cors())
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
