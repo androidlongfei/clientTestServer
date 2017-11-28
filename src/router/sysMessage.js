@@ -68,7 +68,7 @@ module.exports = function(app) {
   })
 }
 
-let myMessageList = [{
+const myMessageList = [{
   mid: 100,
   mtype: 1,
   mtitle: '用户李红的高血压体检结果有部分异常,请您关注',
