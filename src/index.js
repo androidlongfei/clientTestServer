@@ -10,6 +10,7 @@ import pagingRouter from './router/paging.js'
 import userRouter from './router/user.js'
 import authRouter from './router/auth.js'
 import imRouter from './router/im.js'
+import sysMessageRouter from './router/sysMessage.js'
 import familyArchives from './router/familyArchives.js'
 import _ from 'lodash'
 import moment from 'moment'
@@ -38,13 +39,13 @@ wss.on('connection', (ws) => {
 
   setInterval(function() {
     var data = {
-      mtype: 1,
+      mtype: 2,
       mid: md5(moment()),
       timeStamp: moment(),
       data: {
         seqNo: '2017111315052500016'
       },
-      mtitle: '预警消息',
+      mtitle: '用户李红的高血压体检结果有部分异常,请您关注',
       unread: 1,
       mcontent: '',
       mtname: '预警'
@@ -68,8 +69,8 @@ app.use(express.static(path.join(__dirname, 'download')))
 
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length,Authorization,Accept,X-Requested-With,token')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTION')
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length,Authorization,Accept,X-Requested-With,token,lktoken')
   res.header('Access-Control-Allow-Credentials', 'true')
   next();
 };
@@ -77,8 +78,21 @@ var allowCrossDomain = function(req, res, next) {
 // 跨域
 // app.use(allowCrossDomain);
 
+// cosnt corsOptions = {
+//   // origin: 'http://10.4.52.152:8080',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+//   credentials: true,
+//   preflightContinue: true,
+//   allowedHeaders: 'Content-Type,Content-Length,Authorization,Accept,X-Requested-With,token,lktoken'
+// }
+
+const corsOptions = {
+  origin: 'http://10.4.52.152:8080',
+  credentials: true // 客户端带cookie必须设置为true
+}
+
 // middle
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
@@ -126,6 +140,7 @@ userRouter(app)
 authRouter(app)
 familyArchives(app)
 imRouter(app)
+sysMessageRouter(app)
 
 app.listen(config.port);
 console.log(`server start in ${config.port} port`)
