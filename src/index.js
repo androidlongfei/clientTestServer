@@ -11,6 +11,7 @@ import userRouter from './router/user.js'
 import authRouter from './router/auth.js'
 import imRouter from './router/im.js'
 import sysMessageRouter from './router/sysMessage.js'
+import indicatorRouter from './router/indicator.js'
 import familyArchives from './router/familyArchives.js'
 import _ from 'lodash'
 import moment from 'moment'
@@ -92,7 +93,8 @@ const corsOptions = {
 }
 
 // middle
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
@@ -141,6 +143,7 @@ authRouter(app)
 familyArchives(app)
 imRouter(app)
 sysMessageRouter(app)
+indicatorRouter(app)
 
 app.listen(config.port);
 console.log(`server start in ${config.port} port`)
