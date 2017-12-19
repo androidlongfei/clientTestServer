@@ -26,7 +26,8 @@ module.exports = function(app) {
   app.post('/indicators/updateFocus', function(req, res) {
     let bodyParamter = req.body
     console.log('bodyParamter', bodyParamter)
-    let data = JSON.parse(bodyParamter.data)
+    // let data = JSON.parse(bodyParamter.data)
+    let data = bodyParamter.data
     let dataList = data.dataList
     console.log('/indicators/updateFocus', dataList);
     resetIndicators()
