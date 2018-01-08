@@ -56,7 +56,7 @@ const selectIndicators = (curIndicators) => {
 }
 
 const allIndicators = [{
-    'quotaCode': 'code1',
+    'quotaCode': 'code1/code15',
     'quotaName': '血压',
     'quotaMark': '0'
   }, {
