@@ -87,10 +87,10 @@ var allowCrossDomain = function(req, res, next) {
 //   allowedHeaders: 'Content-Type,Content-Length,Authorization,Accept,X-Requested-With,token,lktoken'
 // }
 
-const corsOptions = {
-  origin: 'http://10.4.52.152:8080',
-  credentials: true // 客户端带cookie必须设置为true
-}
+// const corsOptions = {
+//   origin: 'http://10.4.52.152:8080',
+//   credentials: true // 客户端带cookie必须设置为true
+// }
 
 // middle
 // app.use(cors(corsOptions))
