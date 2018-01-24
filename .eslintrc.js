@@ -34,6 +34,8 @@ module.exports = {
       "maxBOF": 1
     }],
     // 函数名后面空格,忽略
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    // 是否在结尾处换行
+    "eol-last": [0, "always"]
   }
 };

@@ -18,6 +18,7 @@ import moment from 'moment'
 import md5 from 'blueimp-md5'
 import doSocket from './socket/webSocket.js'
 import WebSocket from 'ws'
+import promiseRouter from './router/promise'
 
 /**
  * WebSocket
@@ -144,6 +145,7 @@ familyArchives(app)
 imRouter(app)
 sysMessageRouter(app)
 indicatorRouter(app)
+promiseRouter(app)
 
 app.listen(config.port);
 console.log(`server start in ${config.port} port`)
